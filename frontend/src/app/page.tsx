@@ -1,10 +1,12 @@
+import Hero from "./features/hero/Hero";
+
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen justify-center bg-zinc-50 font-sans dark:bg-black">
-      
+    <div className="flex flex-col min-h-full min-w-full justify-center bg-zinc-50 font-sans dark:bg-black">
 
-      <main className="flex min-h-screen w-full max-w-3xl flex-col p-8">
-        <h1>testando</h1>
+      <main className="flex flex-col">
+        {/* Componente da Sessao Inicial */}
+        <Hero/>
       </main>
     </div>
   );
