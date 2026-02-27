@@ -3,7 +3,7 @@ import Background_Image from "../../public/background_photo.jpg"
 
 export default function Hero() {
     return (
-        <div className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="relative flex w-full min-h-screen  items-center justify-center overflow-hidden">
             {/* Imagem de Fundo */}
             <div className="absolute inset-0 z-10">
                 <Image
@@ -14,6 +14,11 @@ export default function Hero() {
                     placeholder="blur"
                     priority
                 />
+            </div>
+            <div className="absolute -bottom-10 left-0 right-0 h-64 z-20 pointer-events-none
+                bg-amber-950/20 
+                mask-[radial-gradient(ellipse_at_bottom,white_10%,transparent_70%)]
+                backdrop-blur-[6px]">
             </div>
 
             {/* Container Grid */}
