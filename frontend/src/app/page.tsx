@@ -1,4 +1,5 @@
 import Hero from "./features/hero/Hero";
+import Listings from "./features/listings/Listings";
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
       <main className="flex flex-col">
         {/* Componente da Sessao Inicial */}
         <Hero/>
+        <Listings/>
       </main>
     </div>
   );
