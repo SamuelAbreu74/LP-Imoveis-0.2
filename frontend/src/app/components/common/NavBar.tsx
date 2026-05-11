@@ -6,7 +6,7 @@ export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <header className="flex justify-between items-center p-8 min-h-20 max-w-screen bg-black text-white">
+        <header className="flex justify-between items-center p-4 min-h-20 max-w-screen bg-orange-950/30 text-white">
             <div className="flex justify-evenly gap-5 items-center z-10">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" fill="currentColor" className="size-8">
                     <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
@@ -62,10 +62,10 @@ export default function NavBar() {
                 /* Lógica da Gaveta: se fechado, joga 100% pra direita */
                 ${isOpen ? "max-[920px]:translate-x-0" : "max-[920px]:translate-x-full"}
             `}>
-                <Button><p>Campanha 1</p></Button>
-                <Button><p>Campanha 2</p></Button>
-                <Button><p>Campanha 3</p></Button>
-                <Button><p>Campanha 4</p></Button>
+                <Button><p className="font-sans">Campanha 1</p></Button>
+                <Button><p className="font-sans">Campanha 2</p></Button>
+                <Button><p className="font-sans">Campanha 3</p></Button>
+                <Button><p className="font-sans">Campanha 4</p></Button>
             </nav>
         </header>
     )

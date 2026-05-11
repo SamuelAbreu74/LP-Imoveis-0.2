@@ -3,7 +3,7 @@ export default function Button({children} : {children: React.ReactNode}) {
         <button className="
             cursor-pointer 
             hover:text-orange-200 
-            w-full
+            w-fit
             // Mobile: Botões
             max-[920px]:border 
             max-[920px]:border-l-4
