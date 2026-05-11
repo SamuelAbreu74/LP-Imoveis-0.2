@@ -1,4 +1,5 @@
 import Hero from "./features/hero/Hero";
+import LaunchGrid from "./features/launches/LaunchGrid";
 import Listings from "./features/listings/Listings";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
         {/* Componente da Sessao Inicial */}
         <Hero/>
         <Listings/>
+        <LaunchGrid/>
       </main>
     </div>
   );
