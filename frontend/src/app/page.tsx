@@ -1,3 +1,4 @@
+import ContactForm from "./features/contact/ContactForm";
 import Hero from "./features/hero/Hero";
 import LaunchGrid from "./features/launches/LaunchGrid";
 import Listings from "./features/listings/Listings";
@@ -11,6 +12,7 @@ export default function Home() {
         <Hero/>
         <Listings/>
         <LaunchGrid/>
+        <ContactForm/>
       </main>
     </div>
   );

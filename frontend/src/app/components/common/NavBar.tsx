@@ -24,7 +24,7 @@ export default function NavBar() {
         <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full
             ${scrolled
                 ? "bg-emerald-950/80 backdrop-blur-md border-b border-orange-200/10 shadow-lg py-3"
-                : "bg-gradient-to-b from-black/40 to-transparent py-5"
+                : "bg-linear-to-b from-black/40 to-transparent py-5"
             }`}
         >
             <div className="max-w-7xl mx-auto px-6 md:px-8 flex justify-between items-center w-full">

@@ -6,7 +6,7 @@ export default function PropertyGrid() {
         <div className="group flex flex-col bg-emerald-900/20 hover:bg-emerald-950/60 rounded-2xl w-full overflow-hidden border border-orange-200/5 hover:border-orange-200/20 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer">
 
             {/* Container da Imagem */}
-            <div className="relative aspect-[4/3] w-full overflow-hidden">
+            <div className="relative aspect-4/3 w-full overflow-hidden">
                 <Image
                     src={image_grid}
                     fill
@@ -34,7 +34,7 @@ export default function PropertyGrid() {
                     Rua Exemplo, Bairro
                 </p>
 
-                <div className="w-full h-[1px] bg-orange-200/10 my-1"></div>
+                <div className="w-full h-px bg-orange-200/10 my-1"></div>
 
                 <div className="flex justify-between items-center mt-1">
                     <span className="text-xs uppercase text-orange-200/50 font-bold tracking-wider">Valor</span>

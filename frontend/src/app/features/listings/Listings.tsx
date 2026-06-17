@@ -103,7 +103,7 @@ export default function Listings() {
         <section id="destaques" className="w-full min-h-screen flex flex-col justify-center  items-center py-16 px-4 md:px-8 bg-linear-to-b from-emerald-950/40 to-amber-950/20 backdrop-blur-[2px]">
             <div className="text-center mb-12 animate-fade-in-up">
                 <h2 className="font-serif font-extralight text-4xl md:text-6xl text-white tracking-wide text-shadow-black text-shadow-sm">
-                    <span className="font-medium text-orange-300">Nossos</span> Destaques 
+                    Nossos <span className="font-medium text-orange-300">Destaques</span> 
                 </h2>
                 <div className="w-24 h-0.5 bg-orange-200/60 mx-auto mt-4 rounded-full"></div>
             </div>
@@ -139,7 +139,7 @@ export default function Listings() {
                         <div className="flex flex-col gap-6 animate-fade-in">
 
                             {/* Imagem com Aspect Ratio elegante */}
-                            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl shadow-xl border border-white/5">
+                            <div className="relative aspect-video w-full overflow-hidden rounded-2xl shadow-xl border border-white/5">
                                 <img
                                     src={imovelSelecionado.imagem}
                                     alt={imovelSelecionado.nome}
