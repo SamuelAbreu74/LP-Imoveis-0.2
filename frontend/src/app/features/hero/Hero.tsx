@@ -15,25 +15,25 @@ export default function Hero() {
                     priority
                 />
                 {/* Camada extra de contraste */}
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/80 via-emerald-950/50 to-transparent z-11"></div>
+                <div className="absolute inset-0 bg-linear-to-r from-emerald-950/80 via-emerald-950/50 to-transparent z-11"></div>
             </div>
 
             {/* Máscara de transição inferior aprimorada */}
             <div className="absolute -bottom-1 left-0 right-0 h-64 z-20 pointer-events-none
-                bg-gradient-to-t from-emerald-950 via-amber-950/20 to-transparent
+                bg-linear-to-t from-emerald-950 via-amber-950/20 to-transparent
                 backdrop-blur-[2px]">
             </div>
 
             {/* Container Grid */}
             <div className="container max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center px-6 md:px-8 z-30 w-full pt-20 lg:pt-0">
-                
+
                 {/* Lado Esquerdo: Texto Imponente */}
                 <div className="animate-fade-in-up space-y-4">
                     <span className="text-xs font-bold uppercase tracking-widest text-orange-300 bg-orange-300/10 px-3.5 py-1.5 rounded-full border border-orange-300/20 inline-block backdrop-blur-sm">
                         Exclusividade & Qualidade
                     </span>
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-extralight text-shadow-black text-shadow-md text-white leading-[1.1] text-left tracking-tight font-serif">
-                        O cenário perfeito para os seus 
+                        O cenário perfeito para os seus
                         <span className="font-medium text-orange-300 block sm:inline"> melhores</span> momentos.
                     </h1>
                 </div>
