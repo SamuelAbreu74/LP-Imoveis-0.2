@@ -3,30 +3,44 @@ import { Imovel } from "@/src/types/imovel";
 
 const HOST = process.env.HOST_LOCAL;
 
-async function getImoveis(): Promise<Imovel[]> {
-    const res = await fetch(`http://${HOST}:5000/api/imoveis`);
+async function getImoveisDestaque(): Promise<Imovel[]> {
+    try {
+        const res = await fetch(`http://${HOST}:5000/api/imoveis?classificacao=destaque`, {
+            cache: 'no-store'
+        });
 
-    if (!res.ok) {
-        throw new Error('Falha ao buscar Imóveis no servidor.');
+        if (!res.ok) {
+            throw new Error('Falha ao buscar Imóveis no servidor.');
+        }
+
+        const json = await res.json();
+        return json.data || [];
+    } catch (error) {
+        console.error("🚨 Erro ao buscar imóveis em destaque:", error);
+        return [];
     }
-
-    const json = await res.json();
-    return json.data || [];
 }
 
-async function getCampanhas(){
-    const res = await fetch(`http://${HOST}:5000/api/campanhas`)
+async function getCampanhas() {
+    try {
+        const res = await fetch(`http://${HOST}:5000/api/campanhas`, {
+            cache: 'no-store'
+        });
 
-    if(!res.ok){
-        throw new Error('Falha ao buscas Campanhas no servidor.')
+        if (!res.ok) {
+            throw new Error('Falha ao buscar Campanhas no servidor.');
+        }
+
+        const json = await res.json();
+        return json.data || [];
+    } catch (error) {
+        console.error("🚨 Erro ao buscar campanhas:", error);
+        return [];
     }
-
-    const json = await res.json();
-    return json.data || [];
 }
 
 export default async function Listings() {
-    const imoveis = await getImoveis();
+    const imoveis = await getImoveisDestaque();
     const campanhas = await getCampanhas();
 
     return (
