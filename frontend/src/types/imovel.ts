@@ -12,5 +12,5 @@ export interface Imovel {
     created_at: string | null;
     nome?: string | null;
     endereco?: string | null;
-    url_photo?: string | null; 
+    url_foto?: string | null; 
 }
