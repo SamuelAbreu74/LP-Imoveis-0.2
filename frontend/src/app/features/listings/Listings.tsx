@@ -11,7 +11,7 @@ async function getImoveis(): Promise<Imovel[]> {
     }
 
     const json = await res.json();
-    return json.imoveis || [];
+    return json.data || [];
 }
 
 async function getCampanhas(){
@@ -22,8 +22,7 @@ async function getCampanhas(){
     }
 
     const json = await res.json();
-    console.log(json)
-    return json || [];
+    return json.data || [];
 }
 
 export default async function Listings() {
