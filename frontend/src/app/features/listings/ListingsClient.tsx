@@ -5,20 +5,16 @@ import { useState } from "react"
 
 interface ListingsClientProps {
     imoveis: Imovel[]
-}
-interface ListingsClientProps {
     campanhas: Campanha[]
 }
 
 export default function ListingsClient({ imoveis, campanhas }: ListingsClientProps) {
     const [selectedId, setSelectedId] = useState<number>(imoveis[0]?.id || 1)
-    // console.log(imoveis)
 
     const campanhasMap = campanhas.reduce((acc, campanha) => {
         acc[campanha.id] = campanha.nome_campanha || '';
         return acc;
     }, {} as Record<number, string>);
-
 
     const statusMap: Record<number, string> = {
         1: 'Disponível',
@@ -26,8 +22,6 @@ export default function ListingsClient({ imoveis, campanhas }: ListingsClientPro
         3: 'Reservado'
     };
     const imovelSelecionado = imoveis.find(imovel => imovel.id === selectedId)
-
-
 
     return (
         <section id="destaques" className="w-full min-h-screen flex flex-col justify-center items-center py-16 px-4 md:px-8 bg-linear-to-b from-emerald-950/40 to-amber-950/20 backdrop-blur-[2px]">
@@ -61,7 +55,7 @@ export default function ListingsClient({ imoveis, campanhas }: ListingsClientPro
                                     {imovel.id_tipo_imovel === 1 ? 'Casa' : 'Apartamento'} | {imovel.nome}
                                 </h3>
                                 <p className="text-xs opacity-70 line-clamp-1">
-                                    {imovel.endereco || 'Nenhuma campanha vinculada'}
+                                    {imovel.endereco || 'Endereço não informado'}
                                 </p>
                             </button>
                         ))}
@@ -94,7 +88,16 @@ export default function ListingsClient({ imoveis, campanhas }: ListingsClientPro
                                     <h2 className="text-3xl md:text-4xl font-serif font-light tracking-wide text-white">
                                         {imovelSelecionado.nome}
                                     </h2>
-                                    <p className="text-orange-200/70 text-sm mt-1">Campanha: {campanhasMap[imovelSelecionado.id_campanha] || 'Nenhuma campanha vinculada'}</p>
+                                    {imovelSelecionado.endereco && (
+                                        <p className="text-gray-400 text-xs flex items-center gap-1 mt-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 text-orange-300/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            </svg>
+                                            {imovelSelecionado.endereco}
+                                        </p>
+                                    )}
+                                    <p className="text-orange-200/70 text-sm mt-1.5">Campanha: {campanhasMap[imovelSelecionado.id_campanha] || 'Nenhuma campanha vinculada'}</p>
                                 </div>
                                 <div className="text-left sm:text-right">
                                     <span className="block text-xs uppercase tracking-wider text-orange-300/60 font-bold">Valor de Venda</span>
@@ -103,6 +106,16 @@ export default function ListingsClient({ imoveis, campanhas }: ListingsClientPro
                                     </p>
                                 </div>
                             </div>
+
+                            {imovelSelecionado.comodos && Object.keys(imovelSelecionado.comodos).length > 0 && (
+                                <div className="flex flex-wrap gap-2 py-1">
+                                    {Object.entries(imovelSelecionado.comodos).map(([chave, valor]) => (
+                                        <span key={chave} className="text-xs bg-emerald-900/30 border border-orange-200/10 px-3 py-1 rounded-full text-orange-100/90 capitalize">
+                                            {valor} {chave}
+                                        </span>
+                                    ))}
+                                </div>
+                            )}
 
                             <div className="grid grid-cols-3 gap-2 border-y border-orange-200/10 py-5 my-2">
                                 <div className="text-center">
