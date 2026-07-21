@@ -1,20 +1,19 @@
 'use client'
-import { Imovel } from "@/src/types/imovel"
-import { Campanha } from "@/src/types/campanha"
+import { ImovelDTO } from "@/src/types/imovel"
 import { useState } from "react"
 
 interface ListingsClientProps {
-    imoveis: Imovel[]
-    campanhas: Campanha[]
+    imoveis: ImovelDTO[]
+    // campanhas: Campanha[]
 }
 
-export default function ListingsClient({ imoveis, campanhas }: ListingsClientProps) {
+export default function ListingsClient({ imoveis }: ListingsClientProps) {
     const [selectedId, setSelectedId] = useState<number>(imoveis[0]?.id || 1)
 
-    const campanhasMap = campanhas.reduce((acc, campanha) => {
-        acc[campanha.id] = campanha.nome_campanha || '';
-        return acc;
-    }, {} as Record<number, string>);
+    // const campanhasMap = campanhas.reduce((acc, campanha) => {
+    //     acc[campanha.id] = campanha.nome_campanha || '';
+    //     return acc;
+    // }, {} as Record<number, string>);
 
     const statusMap: Record<number, string> = {
         1: 'Disponível',
@@ -112,7 +111,7 @@ export default function ListingsClient({ imoveis, campanhas }: ListingsClientPro
                                                     {imovelSelecionado.endereco}
                                                 </p>
                                             )}
-                                            <p className="text-orange-200/70 text-sm mt-1.5">Campanha: {campanhasMap[imovelSelecionado.id_campanha] || 'Nenhuma campanha vinculada'}</p>
+                                            {/* <p className="text-orange-200/70 text-sm mt-1.5">Campanha: {campanhasMap[imovelSelecionado.id_campanha] || 'Nenhuma campanha vinculada'}</p> */}
                                         </div>
                                         <div className="text-left sm:text-right">
                                             <span className="block text-xs uppercase tracking-wider text-orange-300/60 font-bold">Valor de Venda</span>
@@ -140,7 +139,7 @@ export default function ListingsClient({ imoveis, campanhas }: ListingsClientPro
                                             </span>
                                         </div>
                                         <div className="text-center border-x border-orange-200/10">
-                                            <span className="block text-xs text-orange-300/60 font-bold uppercase tracking-wider mb-1">Área Const.</span>
+                                            <span className="block text-xs text-orange-300/60 font-bold uppercase tracking-wider mb-1">Área Construida</span>
                                             <span className="text-lg font-light">
                                                 {imovelSelecionado.area_construida_m2 ? `${imovelSelecionado.area_construida_m2}m²` : '—'}
                                             </span>

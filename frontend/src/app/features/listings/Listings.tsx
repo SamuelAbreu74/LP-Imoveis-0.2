@@ -1,11 +1,11 @@
 import ListingsClient from "./ListingsClient";
-import { Imovel } from "@/src/types/imovel";
+import { ImovelDTO } from "@/src/types/imovel";
 
 const HOST = process.env.HOST_LOCAL;
 
-async function getImoveisDestaque(): Promise<Imovel[]> {
+async function getImoveisDestaque(): Promise<ImovelDTO[]> {
     try {
-        const res = await fetch(`http://${HOST}:5000/api/imoveis?classificacao=destaque`, {
+        const res = await fetch(`http://${HOST}:5000/api/public/imoveis/?classificacao=destaque`, {
             cache: 'no-store'
         });
 
@@ -14,36 +14,36 @@ async function getImoveisDestaque(): Promise<Imovel[]> {
         }
 
         const json = await res.json();
-        return json.data || [];
+        return Array.isArray(json) ? json : (json.data || []);
     } catch (error) {
-        console.error("🚨 Erro ao buscar imóveis em destaque:", error);
+        console.error("Erro ao buscar imóveis em destaque:", error);
         return [];
     }
 }
 
-async function getCampanhas() {
-    try {
-        const res = await fetch(`http://${HOST}:5000/api/campanhas`, {
-            cache: 'no-store'
-        });
+// async function getCampanhas() {
+//     try {
+//         const res = await fetch(`http://${HOST}:5000/api/campanhas`, {
+//             cache: 'no-store'
+//         });
 
-        if (!res.ok) {
-            throw new Error('Falha ao buscar Campanhas no servidor.');
-        }
+//         if (!res.ok) {
+//             throw new Error('Falha ao buscar Campanhas no servidor.');
+//         }
 
-        const json = await res.json();
-        return json.data || [];
-    } catch (error) {
-        console.error("🚨 Erro ao buscar campanhas:", error);
-        return [];
-    }
-}
+//         const json = await res.json();
+//         return json.data || [];
+//     } catch (error) {
+//         console.error("Erro ao buscar campanhas:", error);
+//         return [];
+//     }
+// }
 
 export default async function Listings() {
     const imoveis = await getImoveisDestaque();
-    const campanhas = await getCampanhas();
+    // const campanhas = await getCampanhas();
 
     return (
-        <ListingsClient imoveis={imoveis} campanhas={campanhas} />
+        <ListingsClient imoveis={imoveis}  />
     );
 }
