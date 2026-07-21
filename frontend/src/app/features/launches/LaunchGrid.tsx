@@ -1,21 +1,21 @@
-import { Imovel } from "@/src/types/imovel";
+import { ImovelDTO } from "@/src/types/imovel";
 import PropertyGrid from "../../components/common/PropertyGrid";
 
 const HOST = process.env.HOST_LOCAL;
 
-async function getLancamentos(): Promise<Imovel[]> {
+async function getLancamentos(): Promise<ImovelDTO[]> {
     try {
-        const res = await fetch(`http://${HOST}:5000/api/imoveis?classificacao=lancamento`, {
+        const res = await fetch(`http://${HOST}:5000/api/public/imoveis/?classificacao=lancamento`, {
             cache: 'no-store'
         });
 
         if (!res.ok) throw new Error();
 
         const json = await res.json();
-        return json.data || [];
+        return Array.isArray(json) ? json : (json.data || []);
     } catch (error) {
-        console.error("🚨 Falha ao buscar lançamentos:", error);
-        return []; 
+        console.error("Falha ao buscar lançamentos:", error);
+        return [];
     }
 }
 
