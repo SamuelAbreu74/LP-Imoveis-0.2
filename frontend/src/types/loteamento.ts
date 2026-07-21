@@ -1,6 +1,6 @@
-export interface Campanha {
+export interface Loteamento {
     id: number;
-    nome_campanha: string | null;
+    nome_loteamento: string | null;
     quantidade_unidades: number | null;
     logradouro: string | null;
     numero: string | null;
@@ -9,5 +9,5 @@ export interface Campanha {
     uf: string | null;
     cep: string | null;
     created_at: string | null;
-    id_tipo_campanha: number | null;
+    id_tipo_loteamento: number | null;
 }
