@@ -1,16 +1,25 @@
-export interface Imovel {
+export interface ComodosDTO {
+    quartos: number;
+    banheiros: number;
+    suites: number;
+    vagas_garagem: number;
+    piscina?: number; 
+}
+
+export interface ImovelDTO {
     id: number;
-    id_campanha: number;
+    id_loteamento: number;
     id_tipo_imovel: number | null;
-    tamanho_total_m2: string | number | null;
-    area_construida_m2: string | number | null;
-    comodos: Record<string, any> | null;
+    tamanho_total_m2: number | null;
+    area_construida_m2: number | null;
+    comodos: ComodosDTO | null;
     descricao: string | null;
-    valor_venda: string | number | null;
-    valor_avaliacao_caixa: string | number | null;
+    valor_venda: number | null;
+    valor_avaliacao_caixa: number | null;
     status: number | null;
     created_at: string | null;
-    nome?: string | null;
-    endereco?: string | null;
-    url_foto?: string | null; 
+    nome: string | null;
+    endereco: string | null;
+    url_foto: string | null;
+    classificacao: 'comum' | 'destaque' | 'lancamento';
 }
