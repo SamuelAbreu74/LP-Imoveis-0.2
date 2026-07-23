@@ -3,13 +3,59 @@ import { useState } from "react"
 
 export default function ContactForm() {
     const [sending, setSending] = useState(false)
+    const [telefone, setTelefone] = useState("")
+
+    // formatar o telefone
+    const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        let value = e.target.value.replace(/\D/g, ""); 
+        if (value.length > 11) value = value.slice(0, 11); 
+
+        // Aplica a máscara baseada na quantidade de dígitos
+        if (value.length > 10) {
+            value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, "($1) $2-$3");
+        } else if (value.length > 6) {
+            value = value.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, "($1) $2-$3");
+        } else if (value.length > 2) {
+            value = value.replace(/^(\d{2})(\d{0,5})/, "($1) $2");
+        } else if (value.length > 0) {
+            value = value.replace(/^(\d*)/, "($1");
+        }
+
+        setTelefone(value);
+    }
 
     const handleSubmit = (e: any) => {
         e.preventDefault()
         setSending(true)
-        // Aqui entraria lógica de envio (API, Email, WhatsApp, etc.)
-        setTimeout(() => setSending(false), 2000)
+
+
+        // Captura todos os campos 
+        const formData = new FormData(e.currentTarget);
+        const nome = formData.get('nome');
+        const email = formData.get('email');
+        const telefone = formData.get('telefone');
+        const objetivo = formData.get('objetivo');
+        const mensagemOpcional = formData.get('mensagem') || 'Nenhuma observação adicional.';
+
+
+        const textoWhatsApp = `*NOVO CONTATO VIA SITE (GERAL)*\n\n` +
+            `*Nome:* ${nome}\n` +
+            `*E-mail:* ${email}\n` +
+            `*Telefone:* ${telefone}\n` +
+            `*Objetivo:* ${objetivo}\n\n` +
+            `*Mensagem / Preferências:*\n${mensagemOpcional}`;
+
+        const telefoneValdo = "5585989025026";
+        const url = `https://wa.me/${telefoneValdo}?text=${encodeURIComponent(textoWhatsApp)}`;
+
+        setTimeout(() => {
+            window.open(url, "_blank");
+            setSending(false);
+            setTelefone("");
+            (e.target as HTMLFormElement).reset(); 
+        }, 800);
     }
+
 
     return (
         <section id="contato" className="w-full py-20 px-4 md:px-8 bg-linear-to-b from-emerald-950/40 to-transparent backdrop-blur-[2px]">
@@ -32,78 +78,71 @@ export default function ContactForm() {
                 <div className="bg-emerald-950/40 p-6 md:p-10 rounded-3xl border border-orange-200/10 shadow-2xl backdrop-blur-md">
                     <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                        {/* Campo: Nome Completo */}
                         <div className="flex flex-col gap-2">
                             <label className="text-xs font-bold text-orange-200/70 uppercase tracking-wider">Nome Completo</label>
                             <input
                                 type="text"
+                                name="nome"  
                                 required
                                 placeholder="Ex: Gabriel Silva"
                                 className="w-full p-3.5 bg-emerald-900/40 text-white placeholder-emerald-100/20 border border-orange-200/10 rounded-xl outline-none focus:border-orange-300/50 focus:bg-emerald-900/80 transition-all text-sm"
                             />
                         </div>
 
-                        {/* Campo: E-mail */}
                         <div className="flex flex-col gap-2">
-                            <label className="text-xs font-bold text-orange-200/70 uppercase tracking-wider">E-mail Corporativo / Pessoal</label>
+                            <label className="text-xs font-bold text-orange-200/70 uppercase tracking-wider">E-mail</label>
                             <input
                                 type="email"
+                                name="email"
                                 required
                                 placeholder="Ex: gabriel@exemplo.com"
                                 className="w-full p-3.5 bg-emerald-900/40 text-white placeholder-emerald-100/20 border border-orange-200/10 rounded-xl outline-none focus:border-orange-300/50 focus:bg-emerald-900/80 transition-all text-sm"
                             />
                         </div>
 
-                        {/* Campo: Telefone / WhatsApp */}
                         <div className="flex flex-col gap-2">
                             <label className="text-xs font-bold text-orange-200/70 uppercase tracking-wider">WhatsApp / Telefone</label>
                             <input
-                                type="tel"
+                                type="text"
+                                name="telefone"
                                 required
+                                value={telefone}
+                                onChange={handlePhoneChange}
                                 placeholder="Ex: (11) 99999-9999"
                                 className="w-full p-3.5 bg-emerald-900/40 text-white placeholder-emerald-100/20 border border-orange-200/10 rounded-xl outline-none focus:border-orange-300/50 focus:bg-emerald-900/80 transition-all text-sm"
                             />
                         </div>
 
-                        {/* Campo: Intenção do Cliente */}
                         <div className="flex flex-col gap-2">
                             <label className="text-xs font-bold text-orange-200/70 uppercase tracking-wider">Qual o seu objetivo?</label>
-                            <select className="w-full p-3.5 bg-emerald-900/40 border border-orange-200/10 rounded-xl text-white outline-none focus:border-orange-300/50 focus:bg-emerald-900/80 transition-all cursor-pointer text-sm appearance-none">
+                            <select
+                                name="objetivo"
+                                className="w-full p-3.5 bg-emerald-900/40 border border-orange-200/10 rounded-xl text-white outline-none focus:border-orange-300/50 focus:bg-emerald-900/80 transition-all cursor-pointer text-sm appearance-none"
+                            >
                                 <option className="bg-emerald-950 text-white">Quero Comprar um Imóvel</option>
                                 <option className="bg-emerald-950 text-white">Quero apenas Investir</option>
                             </select>
                         </div>
 
-                        {/* Campo: Mensagem / Observações Adicionais */}
                         <div className="flex flex-col gap-2 md:col-span-2">
-                            <label className="text-xs font-bold text-orange-200/70 uppercase tracking-wider">Preferências ou Mensagem (Opcional)</label>
+                            <label className="text-xs font-bold text-orange-200/70 uppercase tracking-wider">Mensagem ou Preferências (Opcional)</label>
                             <textarea
+                                name="mensagem"
                                 rows={4}
-                                placeholder="Conte-nos um pouco sobre o que você busca (bairros de preferência, número de quartos, etc...)"
+                                placeholder="Conte-nos um pouco sobre a região ou tipo de imóvel que você procura..."
                                 className="w-full p-3.5 bg-emerald-900/40 text-white placeholder-emerald-100/20 border border-orange-200/10 rounded-xl outline-none focus:border-orange-300/50 focus:bg-emerald-900/80 transition-all text-sm resize-none"
                             />
                         </div>
 
-                        {/* Botão de Envio Centralizado */}
                         <div className="md:col-span-2 flex justify-end mt-2">
                             <button
                                 type="submit"
                                 disabled={sending}
-                                className="w-full md:w-auto bg-orange-200 hover:bg-orange-300 disabled:bg-orange-200/50 text-emerald-950 font-bold px-8 py-4 flex items-center justify-center gap-2 transition-all duration-300 uppercase tracking-widest rounded-xl text-xs transform active:scale-[0.98] cursor-pointer"
+                                className="w-full bg-[#25D366] hover:bg-[#1DA851] disabled:bg-emerald-900 text-white font-bold px-8 py-4 flex items-center justify-center gap-2 transition-all duration-300 uppercase tracking-widest rounded-xl text-xs transform active:scale-[0.98] cursor-pointer shadow-lg shadow-[#25D366]/20"
                             >
-                                {sending ? (
-                                    <span>Enviando dados...</span>
-                                ) : (
-                                    <>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L6 12Zm0 0h7.5" />
-                                        </svg>
-                                        Solicitar Contato
-                                    </>
-                                )}
+                                {sending ? 'Preparando mensagem...' : 'Enviar Contato via WhatsApp'}
                             </button>
                         </div>
-
                     </form>
                 </div>
 
