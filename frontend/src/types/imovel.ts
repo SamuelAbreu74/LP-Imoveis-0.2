@@ -6,6 +6,13 @@ export interface ComodosDTO {
     piscina?: number; 
 }
 
+export interface ImovelFotoDTO {
+    id: number;
+    url_foto: string;
+    destaque: boolean;
+    ordem: number;
+}
+
 export interface ImovelDTO {
     id: number;
     id_loteamento: number;
@@ -22,4 +29,5 @@ export interface ImovelDTO {
     endereco: string | null;
     url_foto: string | null;
     classificacao: 'comum' | 'destaque' | 'lancamento';
+    fotos?: ImovelFotoDTO[];
 }
