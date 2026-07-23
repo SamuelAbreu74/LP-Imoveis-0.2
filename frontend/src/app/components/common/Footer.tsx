@@ -31,7 +31,6 @@ export default function Footer() {
                             <li><a href="#inicio" className="hover:text-orange-300 transition-colors">Início</a></li>
                             <li><a href="#lancamentos" className="hover:text-orange-300 transition-colors">Lançamentos</a></li>
                             <li><a href="#destaques" className="hover:text-orange-300 transition-colors">Destaques</a></li>
-                            <li><a href="#" className="hover:text-orange-300 transition-colors">Sobre Nós</a></li>
                         </ul>
                     </div>
 
@@ -40,13 +39,13 @@ export default function Footer() {
                         <span className="text-xs font-bold uppercase tracking-widest text-orange-300/80">Atendimento</span>
                         <ul className="flex flex-col gap-2 text-sm text-gray-300 font-light">
                             <li className="flex items-center gap-2">
-                                <span className="text-orange-300/60">📍</span> Av. Santos Dummond, 74000 - Fortaleza, CE
+                                {/* <span className="text-orange-300/60">📍</span> Av. Santos Dummond, 74000 - Fortaleza, CE */}
                             </li>
                             <li className="flex items-center gap-2">
-                                <span className="text-orange-300/60">📞</span> (85) 98002-8922
+                                <span className="text-orange-300/60">📞</span> (85) 98902-5026
                             </li>
                             <li className="flex items-center gap-2">
-                                <span className="text-orange-300/60">✉️</span> contato@valdoimoveis.com.br
+                                <span className="text-orange-300/60">✉️</span> ferreiraimoveisoficial@gmail.com
                             </li>
                         </ul>
                     </div>
