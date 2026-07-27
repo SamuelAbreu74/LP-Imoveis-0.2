@@ -14,14 +14,14 @@ export default function Hero() {
         const formData = new FormData(e.currentTarget)
         const tipo = formData.get("tipo")?.toString() || ""
         const localizacao = formData.get("localizacao")?.toString() || ""
-        const valorMinimo = formData.get("valorMinimo")?.toString() || ""
-        const valorMaximo = formData.get("valorMaximo")?.toString() || ""
+        // const valorMinimo = formData.get("valorMinimo")?.toString() || ""
+        // const valorMaximo = formData.get("valorMaximo")?.toString() || ""
 
         const params = new URLSearchParams()
         if (tipo) params.set("tipo", tipo)
         if (localizacao) params.set("localizacao", localizacao)
-        if (valorMinimo) params.set("valorMinimo", valorMinimo)
-        if (valorMaximo) params.set("valorMaximo", valorMaximo)
+        // if (valorMinimo) params.set("valorMinimo", valorMinimo)
+        // if (valorMaximo) params.set("valorMaximo", valorMaximo)
 
         router.push(`/imoveis?${params.toString()}`)
     }
@@ -62,58 +62,67 @@ export default function Hero() {
 
                 {/* Lado Direito: Formulário */}
                 <div className="flex justify-center lg:justify-end animate-fade-in-up [animation-delay:200ms] w-full">
-                    <div className="bg-emerald-950/80 p-6 md:p-8 rounded-3xl border border-orange-200/20 shadow-2xl w-full max-w-lg backdrop-blur-md">
+                    <div className="bg-emerald-950/60 p-6 md:p-8 rounded-3xl border border-orange-200/10 shadow-2xl w-full max-w-lg backdrop-blur-md">
+
+                        {/* Cabeçalho do Formulário */}
                         <h3 className="text-2xl md:text-3xl font-light text-white mb-6 font-serif tracking-wide border-b border-orange-200/10 pb-4">
                             Busque seu <span className="text-orange-300 font-normal">imóvel</span>
                         </h3>
 
                         <form onSubmit={handleSearch} className="flex flex-col gap-5">
-                            <div>
-                                <label className="text-xs font-bold text-orange-200/70 block mb-2 uppercase tracking-wider">Tipo do Imóvel</label>
-                                <select name="tipo" className="w-full p-3.5 bg-emerald-900/40 border border-orange-200/10 rounded-xl text-white outline-none focus:border-orange-300/50 focus:bg-emerald-900/80 transition-all cursor-pointer appearance-none">
-                                    <option value="" className="bg-emerald-950 text-white">Todos os tipos</option>
-                                    <option value="Apartamento" className="bg-emerald-950 text-white">Apartamento</option>
-                                    <option value="Casa" className="bg-emerald-950 text-white">Casa</option>
-                                </select>
-                            </div>
 
-                            <div>
-                                <label className="text-xs font-bold text-orange-200/70 block mb-2 uppercase tracking-wider">Localização</label>
-                                <input
-                                    type="text"
-                                    name="localizacao"
-                                    placeholder="Ex: Riviera, Centro..."
-                                    className="w-full p-3.5 bg-emerald-900/40 text-white placeholder-emerald-100/30 border border-orange-200/10 rounded-xl outline-none focus:border-orange-300/50 focus:bg-emerald-900/80 transition-all"
-                                />
-                            </div>
-
-                            <div className="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label className="text-xs font-bold text-orange-200/70 block mb-2 uppercase tracking-wider">Valor Mínimo</label>
-                                    <input
-                                        type="number"
-                                        name="valorMinimo"
-                                        placeholder="R$ 0,00"
-                                        className="w-full p-3.5 bg-emerald-900/40 text-white placeholder-emerald-100/30 border border-orange-200/10 rounded-xl outline-none focus:border-orange-300/50 focus:bg-emerald-900/80 transition-all [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-                                    />
-                                </div>
-                                <div>
-                                    <label className="text-xs font-bold text-orange-200/70 block mb-2 uppercase tracking-wider">Valor Máximo</label>
-                                    <input
-                                        type="number"
-                                        name="valorMaximo"
-                                        placeholder="R$ 0,00"
-                                        className="w-full p-3.5 bg-emerald-900/40 text-white placeholder-emerald-100/30 border border-orange-200/10 rounded-xl outline-none focus:border-orange-300/50 focus:bg-emerald-900/80 transition-all [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-                                    />
+                            {/* Campo: Tipo do Imóvel */}
+                            <div className="flex flex-col gap-2 relative group">
+                                <label className="text-xs font-bold text-orange-200/60 uppercase tracking-widest">Tipo do Imóvel</label>
+                                <div className="relative flex items-center">
+                                    <select
+                                        name="tipo"
+                                        className="w-full p-3.5 pr-10 bg-emerald-900/30 text-white border border-orange-200/10 rounded-2xl outline-none focus:border-orange-300/40 focus:bg-emerald-900/60 transition-all duration-300 cursor-pointer appearance-none text-sm font-sans tracking-wide"
+                                    >
+                                        <option value="" className="bg-emerald-950 text-white/90">Todos os tipos</option>
+                                        <option value="1" className="bg-emerald-950 text-white/90">Apartamento</option>
+                                        <option value="5" className="bg-emerald-950 text-white/90">Casa de Rua</option>
+                                        <option value="6" className="bg-emerald-950 text-white/90">Casa de Condomínio</option>
+                                        <option value="12" className="bg-emerald-950 text-white/90">Lote Residencial</option>
+                                    </select>
+                                    <div className="absolute right-4 pointer-events-none text-orange-300/60 group-focus-within:text-orange-300 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
 
-                            <button type="submit" className="w-full bg-orange-200 hover:bg-orange-300 hover:cursor-pointer hover:shadow-xl hover:shadow-orange-950/50 text-emerald-950 font-bold py-4 mt-2 flex items-center justify-center gap-2 transition-all duration-300 uppercase tracking-widest rounded-xl text-sm transform active:scale-[0.98]">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+                            {/* Campo: Localização */}
+                            <div className="flex flex-col gap-2 relative">
+                                <label className="text-xs font-bold text-orange-200/60 uppercase tracking-widest">Localização</label>
+                                <div className="relative flex items-center">
+                                    <input
+                                        type="text"
+                                        name="localizacao"
+                                        placeholder="Ex: Riviera, Centro..."
+                                        className="w-full p-3.5 pl-11 bg-emerald-900/30 text-white placeholder-emerald-100/20 border border-orange-200/10 rounded-2xl outline-none focus:border-orange-300/40 focus:bg-emerald-900/60 transition-all duration-300 text-sm font-sans tracking-wide"
+                                    />
+                                    <div className="absolute left-4 pointer-events-none text-orange-300/40">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="w-4 h-4">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Botão de Envio */}
+                            <button
+                                type="submit"
+                                className="w-full mt-2 py-4 px-6 inline-flex items-center justify-center gap-2 rounded-2xl font-bold uppercase tracking-widest text-xs text-emerald-950 bg-orange-200  hover:bg-orange-300 hover:shadow-xl hover:shadow-orange-950/40  transition-duration cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-orange-300/50 transform active:scale-[0.97]"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                                 </svg>
-                                Encontrar Imóvel
+                                <span>Encontrar Imóvel</span>
                             </button>
+
                         </form>
                     </div>
                 </div>
