@@ -1,11 +1,11 @@
 import ListingsClient from "./ListingsClient";
 import { ImovelDTO } from "@/src/types/imovel";
 
-const HOST = process.env.HOST_LOCAL;
+const HOST = process.env.NEXT_PUBLIC_API_URL;
 
 async function getImoveisDestaque(): Promise<ImovelDTO[]> {
     try {
-        const res = await fetch(`http://${HOST}:5000/api/public/imoveis/?classificacao=destaque`, {
+        const res = await fetch(`${HOST}/api/public/imoveis/?classificacao=destaque`, {
             cache: 'no-store'
         });
 
