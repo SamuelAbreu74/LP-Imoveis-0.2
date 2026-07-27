@@ -2,7 +2,7 @@ import { ImovelDTO } from "@/src/types/imovel";
 import Image from "next/image";
 import WhatsAppButton from "../../components/common/WhatsappButton";
 
-const HOST = process.env.HOST_LOCAL;
+const HOST = process.env.NEXT_PUBLIC_API_URL;
 
 interface ImovelPageProps {
     params: Promise<{
@@ -13,7 +13,7 @@ interface ImovelPageProps {
 // Busca os detalhes do imóvel 
 async function getImovelDetalhes(id: string): Promise<ImovelDTO | null> {
     try {
-        const res = await fetch(`http://${HOST}:5000/api/public/imoveis/${id}`, {
+        const res = await fetch(`${HOST}/api/public/imoveis/${id}`, {
             cache: 'no-store'
         });
 

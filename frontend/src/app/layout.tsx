@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LP - Valdo Imóveis",
-  description: "Landing Page Imóveis de Alto Padrão",
+  title: "LP - Imóveis Valdo",
+  description: "Landing Page Imóveis Valdo",
 };
 
 export default function RootLayout({
