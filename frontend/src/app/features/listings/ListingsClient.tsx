@@ -17,7 +17,7 @@ export default function ListingsClient({ imoveis }: ListingsClientProps) {
     const imovelSelecionado = imoveis.find(imovel => imovel.id === selectedId)
 
     return (
-        <section id="destaques" className="w-full min-h-screen flex flex-col justify-center items-center py-16 px-4 md:px-8 bg-gradient-to-b from-emerald-950/40 to-amber-950/20 backdrop-blur-[2px]">
+        <section id="destaques" className="w-full min-h-screen flex flex-col justify-center items-center py-16 px-4 md:px-8 bg-linear-to-b from-emerald-950/40 to-amber-950/20 backdrop-blur-[2px]">
             {/* Cabeçalho */}
             <div className="text-center mb-12 animate-fade-in-up">  
                 <h2 className="font-serif font-extralight text-3xl md:text-5xl text-white tracking-wide text-shadow-black text-shadow-sm">
@@ -27,7 +27,7 @@ export default function ListingsClient({ imoveis }: ListingsClientProps) {
             </div>
 
             {/* Container Principal */}
-            <div className="w-full max-w-6xl flex flex-col md:flex-row rounded-3xl bg-emerald-950/40 border border-orange-200/10 shadow-2xl backdrop-blur-md overflow-hidden min-h-[42rem]">
+            <div className="w-full max-w-6xl flex flex-col md:flex-row rounded-3xl bg-emerald-950/40 border border-orange-200/10 shadow-2xl backdrop-blur-md overflow-hidden min-h-168">
                 {imoveis.length === 0 ? (
                     <div className="flex-1 flex flex-col items-center justify-center p-8 md:p-16 text-center gap-4 animate-fade-in">
                         <div className="w-16 h-16 rounded-full bg-emerald-900/30 border border-orange-200/10 flex items-center justify-center text-orange-300/60 shadow-inner">
@@ -45,7 +45,7 @@ export default function ListingsClient({ imoveis }: ListingsClientProps) {
                 ) : (
                     <>
                         {/* LADO ESQUERDO: LISTA DE IMÓVEIS */}
-                        <div className="w-full md:w-[22rem] bg-emerald-950/80 border-b md:border-b-0 md:border-r border-orange-200/10 flex flex-col">
+                        <div className="w-full md:w-88 bg-emerald-950/80 border-b md:border-b-0 md:border-r border-orange-200/10 flex flex-col">
                             <div className="p-5 border-b border-orange-200/10">
                                 <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-orange-300/80">Imóveis Disponíveis</span>
                             </div>
