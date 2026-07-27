@@ -18,17 +18,18 @@ export async function getImoveisFiltrados(filters: {
 }) {
     try {
         const queryParams = new URLSearchParams();
+        const HOST = process.env.NEXT_PUBLIC_API_URL
 
         if (filters.tipo) queryParams.set("tipo", filters.tipo);
         if (filters.localizacao) queryParams.set("localizacao", filters.localizacao);
-        if (filters.valorMinimo) queryParams.set("valorMinimo", filters.valorMinimo);
-        if (filters.valorMaximo) queryParams.set("valorMaximo", filters.valorMaximo);
+        // if (filters.valorMinimo) queryParams.set("valorMinimo", filters.valorMinimo);
+        // if (filters.valorMaximo) queryParams.set("valorMaximo", filters.valorMaximo);
 
         const queryString = queryParams.toString();
 
         const url = queryString
-            ? `http://localhost:5000/api/public/imoveis?${queryString}`
-            : `http://localhost:5000/api/public/imoveis`;
+            ? `${HOST}/api/public/imoveis?${queryString}`
+            : `${HOST}/api/public/imoveis`;
 
         const response = await fetch(url, {
             cache: 'no-store'
