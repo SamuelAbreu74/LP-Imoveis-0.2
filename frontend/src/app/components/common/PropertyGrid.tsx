@@ -1,14 +1,19 @@
 import Image from "next/image";
-import image_grid from "../../public/imagem_imovel_grid.jpg"; 
-import { Imovel } from "@/src/types/imovel"; 
+import Link from "next/link";
+import image_grid from "../../public/imagem_imovel_grid.jpg";
+import { ImovelDTO } from "@/src/types/imovel";
 
 interface PropertyGridProps {
-    imovel: Imovel;
+    imovel: ImovelDTO;
 }
 
 export default function PropertyGrid({ imovel }: PropertyGridProps) {
+    const fotoCapa = imovel.fotos?.[0].url_foto || imovel.url_foto || image_grid
+
+
     return (
-        <div className="group flex flex-col bg-emerald-900/20 hover:bg-emerald-950/60 rounded-2xl w-full overflow-hidden border border-orange-200/5 hover:border-orange-200/20 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer">
+        <Link href={`/imoveis/${imovel.id}`} 
+        className="group flex flex-col bg-emerald-900/20 hover:bg-emerald-950/60 rounded-2xl w-full overflow-hidden border border-orange-200/5 hover:border-orange-200/20 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer">
 
             {/* Container da Imagem */}
             <div className="relative aspect-4/3 w-full overflow-hidden bg-emerald-950">
@@ -16,14 +21,14 @@ export default function PropertyGrid({ imovel }: PropertyGridProps) {
                     src={imovel.url_foto || image_grid}
                     fill
                     className="object-cover transform group-hover:scale-105 transition-transform duration-500"
-                    alt={imovel.nome || "Imagem do Imóvel"} 
-                    unoptimized={!!imovel.url_foto}
+                    alt={imovel.nome || "Imagem do Imóvel"}
+                    unoptimized={fotoCapa !== image_grid}
                 />
-                {imovel.id_campanha && (
+                {/* {imovel.id_campanha && (
                     <div className="absolute top-3 left-3 bg-emerald-950/80 text-orange-200 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded border border-orange-200/10 backdrop-blur-sm">
                         Campanha {imovel.id_campanha}
                     </div>
-                )}
+                )} */}
             </div>
 
             {/* Corpo de Informações */}
@@ -51,6 +56,6 @@ export default function PropertyGrid({ imovel }: PropertyGridProps) {
                     </p>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 }
