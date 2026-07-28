@@ -84,7 +84,7 @@ export default function ContactForm() {
                                 type="text"
                                 name="nome"  
                                 required
-                                placeholder="Ex: Gabriel Silva"
+                                placeholder="Ex: Valdo Ferreira"
                                 className="w-full p-3.5 bg-emerald-900/40 text-white placeholder-emerald-100/20 border border-orange-200/10 rounded-xl outline-none focus:border-orange-300/50 focus:bg-emerald-900/80 transition-all text-sm"
                             />
                         </div>
@@ -95,7 +95,7 @@ export default function ContactForm() {
                                 type="email"
                                 name="email"
                                 required
-                                placeholder="Ex: gabriel@exemplo.com"
+                                placeholder="Ex: valdo@exemplo.com"
                                 className="w-full p-3.5 bg-emerald-900/40 text-white placeholder-emerald-100/20 border border-orange-200/10 rounded-xl outline-none focus:border-orange-300/50 focus:bg-emerald-900/80 transition-all text-sm"
                             />
                         </div>
@@ -108,7 +108,7 @@ export default function ContactForm() {
                                 required
                                 value={telefone}
                                 onChange={handlePhoneChange}
-                                placeholder="Ex: (11) 99999-9999"
+                                placeholder="Ex: (85) 99999-9999"
                                 className="w-full p-3.5 bg-emerald-900/40 text-white placeholder-emerald-100/20 border border-orange-200/10 rounded-xl outline-none focus:border-orange-300/50 focus:bg-emerald-900/80 transition-all text-sm"
                             />
                         </div>
