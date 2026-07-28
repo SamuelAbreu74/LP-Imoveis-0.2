@@ -18,7 +18,7 @@ export async function getImoveisFiltrados(filters: {
 }) {
     try {
         const queryParams = new URLSearchParams();
-        const HOST = process.env.NEXT_PUBLIC_API_URL
+        const HOST = process.env.NEXT_PRIVATE_API_URL
 
         if (filters.tipo) queryParams.set("tipo", filters.tipo);
         if (filters.localizacao) queryParams.set("localizacao", filters.localizacao);
