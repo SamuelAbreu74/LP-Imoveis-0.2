@@ -45,7 +45,7 @@ export default function ContactForm() {
             `*Objetivo:* ${objetivo}\n\n` +
             `*Mensagem / Preferências:*\n${mensagemOpcional}`;
 
-        const telefoneValdo = "5585989025026";
+        const telefoneValdo = "5585985405491";
         const url = `https://wa.me/${telefoneValdo}?text=${encodeURIComponent(textoWhatsApp)}`;
 
         setTimeout(() => {
