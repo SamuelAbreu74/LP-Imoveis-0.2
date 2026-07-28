@@ -2,7 +2,7 @@ import { ImovelDTO } from "@/src/types/imovel";
 import Image from "next/image";
 import WhatsAppButton from "../../components/common/WhatsappButton";
 
-const HOST = process.env.NEXT_PUBLIC_API_URL;
+const HOST = process.env.NEXT_PRIVATE_API_URL;
 
 interface ImovelPageProps {
     params: Promise<{

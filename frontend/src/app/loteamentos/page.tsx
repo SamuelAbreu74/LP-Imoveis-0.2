@@ -1,7 +1,7 @@
 import { LoteamentoDTO } from '@/src/types/loteamento';
 import Link from 'next/link';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+const API_URL = process.env.NEXT_PRIVATE_API_URL;
 
 async function getLoteamentos(): Promise<LoteamentoDTO[]> {
   try {

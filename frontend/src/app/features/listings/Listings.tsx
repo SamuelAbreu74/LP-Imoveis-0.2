@@ -1,7 +1,7 @@
 import ListingsClient from "./ListingsClient";
 import { ImovelDTO } from "@/src/types/imovel";
 
-const HOST = process.env.NEXT_PUBLIC_API_URL;
+const HOST = process.env.NEXT_PRIVATE_API_URL;
 
 async function getImoveisDestaque(): Promise<ImovelDTO[]> {
     try {
