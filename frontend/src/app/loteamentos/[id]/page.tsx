@@ -12,7 +12,6 @@ async function getLoteamento(id: string): Promise<LoteamentoDTO | null> {
     const res = await fetch(`${API_URL}/api/public/loteamentos/${id}`, {
       cache: 'no-store',
     });
-    console.log("RESPOSTA: ", res)
     if (!res.ok) return null;
     return res.json();
   } catch (error) {

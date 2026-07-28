@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import image_grid from "../../public/imagem_imovel_grid.jpg";
+const image_grid = "/imagem_imovel_grid.jpg";
 import { ImovelDTO } from "@/src/types/imovel";
 
 interface PropertyGridProps {
