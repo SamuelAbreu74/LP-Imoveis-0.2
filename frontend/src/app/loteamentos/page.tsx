@@ -50,7 +50,7 @@ export default async function LoteamentosPage() {
                 </div>
 
                 <div className="mt-3 space-y-1 text-sm text-gray-400">
-                  {lote.bairro && <p>📍 {lote.bairro}</p>}
+                  {lote.bairro && <p>{lote.bairro}</p>}
                   {(lote.cidade || lote.uf) && (
                     <p>
                       {lote.cidade && lote.cidade}
