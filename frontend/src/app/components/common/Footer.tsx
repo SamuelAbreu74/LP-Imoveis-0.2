@@ -42,7 +42,7 @@ export default function Footer() {
                                 {/* <span className="text-orange-300/60">📍</span> Av. Santos Dummond, 74000 - Fortaleza, CE */}
                             </li>
                             <li className="flex items-center gap-2">
-                                <span className="text-orange-300/60">📞</span> (85) 98902-5026
+                                <span className="text-orange-300/60">📞</span> (85) 998540-5491
                             </li>
                             <li className="flex items-center gap-2">
                                 <span className="text-orange-300/60">✉️</span> ferreiraimoveisoficial@gmail.com

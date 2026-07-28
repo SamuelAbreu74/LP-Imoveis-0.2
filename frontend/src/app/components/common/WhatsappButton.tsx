@@ -9,7 +9,7 @@ interface WhatsAppButtonProps {
 export default function WhatsAppButton({ imovelNome, imovelEndereco, imovelValor }: WhatsAppButtonProps) {
     const handleWhatsAppClick = () => {
 
-        const telefoneValdo = "5585989025026";
+        const telefoneValdo = "5585985405491";
 
         const valorFormatado = imovelValor
             ? `R$ ${Number(imovelValor).toLocaleString('pt-BR')}`
