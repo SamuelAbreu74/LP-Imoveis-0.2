@@ -1,7 +1,8 @@
 import { ImovelDTO } from "@/src/types/imovel";
 import PropertyGrid from "../../components/common/PropertyGrid";
 
-const HOST = process.env.NEXT_PUBLIC_API_URL;
+const HOST = process.env.NEXT_PRIVATE_API_URL;
+console.log(HOST)
 
 async function getLancamentos(): Promise<ImovelDTO[]> {
     try {

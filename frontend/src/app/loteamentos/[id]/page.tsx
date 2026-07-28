@@ -3,7 +3,7 @@ import { ImovelDTO } from '@/src/types/imovel';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+const API_URL = process.env.NEXT_PRIVATE_API_URL;
 
 async function getLoteamento(id: string): Promise<LoteamentoDTO | null> {
   try {
@@ -26,7 +26,6 @@ export default async function LoteamentoDetalhesPage({
 }) {
   const { id } = await params;
   const loteamento = await getLoteamento(id);
-  console.log("LOTEAMENTO :",loteamento)
 
   if (!loteamento) {
     return (
@@ -46,7 +45,6 @@ export default async function LoteamentoDetalhesPage({
 
   // Usa os imóveis que já vieram do include do backend
   const imoveis = loteamento.imoveis || [];
-  console.log("IMOVEIS: ",imoveis)
 
   return (
     <main className="min-h-screen bg-emerald-950 text-white py-20 px-4 md:px-8">
