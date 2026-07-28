@@ -10,6 +10,8 @@ interface PageProps {
     }>
 }
 
+export const dynamic = 'force-dynamic';
+
 export async function getImoveisFiltrados(filters: {
     tipo?: string;
     localizacao?: string;

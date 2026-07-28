@@ -5,6 +5,8 @@ import Image from 'next/image';
 
 const API_URL = process.env.NEXT_PRIVATE_API_URL;
 
+export const dynamic = 'force-dynamic';
+
 async function getLoteamento(id: string): Promise<LoteamentoDTO | null> {
   try {
     const res = await fetch(`${API_URL}/api/public/loteamentos/${id}`, {

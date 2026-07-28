@@ -3,6 +3,8 @@ import Link from 'next/link';
 
 const API_URL = process.env.NEXT_PRIVATE_API_URL;
 
+export const dynamic = 'force-dynamic';
+
 async function getLoteamentos(): Promise<LoteamentoDTO[]> {
   try {
     const res = await fetch(`${API_URL}/api/public/loteamentos`, {

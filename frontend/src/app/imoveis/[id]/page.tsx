@@ -10,6 +10,8 @@ interface ImovelPageProps {
     }>;
 }
 
+export const dynamic = 'force-dynamic';
+
 // Busca os detalhes do imóvel 
 async function getImovelDetalhes(id: string): Promise<ImovelDTO | null> {
     try {
